@@ -1,0 +1,23 @@
+{
+  "author": "Kilian Ciuffolo <me@nailik.org> (http://nailik.org)",
+  "name": "fnchain",
+  "description": "Serial control flow with explicit progression",
+  "keywords": ["step", "series", "serial", "chain", "next"],
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/kilianc/node-fnchain.git"
+  },
+  "main": "./",
+  "scripts": {
+    "test": "make test"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "1.0.x",
+    "should": "0.6.x"
+  }
+}
