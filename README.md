@@ -1,4 +1,4 @@
-# FnChain ![project status](http://dl.dropbox.com/u/2208502/maintained.png)
+# FnChain [![build status](https://secure.travis-ci.org/kilianc/node-fnchain.png?branch=master)](http://travis-ci.org/kilianc/node-fnchain)
 
 Serial control flow with explicit progression
 
@@ -95,7 +95,8 @@ var chain = new FnChain([
   }
 ], function (err, p1, p2) {
   
-}).call('foo', 'bar')
+})
+chain.call('foo', 'bar')
 
 ```
 

@@ -3,6 +3,14 @@ var should = require('should'),
 
 var once;
 
+function delay() {
+  var fn = this
+  var args = arguments
+  setTimeout(function () {
+    fn.apply(null, args);
+  }, 20);
+}
+
 describe('FnChain', function () {
   beforeEach(function () {
     once = false;
@@ -17,12 +25,12 @@ describe('FnChain', function () {
       function (p1, p2, next) {
         p1.should.be.equal('foo')
         p2.should.be.equal('bar')
-        next()
+        delay.call(next)
       },
       function (p1, p2, next) {
         p1.should.be.equal('foo')
         p2.should.be.equal('bar')
-        next()
+        delay.call(next)
       }
     ], function (err, p1, p2) {
       once.should.be.false
@@ -36,14 +44,14 @@ describe('FnChain', function () {
     new FnChain([
       function (p1, p2, next) {
         p1.step = 1
-        next()
+        delay.call(next)
       },
       function (p1, p2, next) {
         p1.step = 2
-        next(null, true)
+        delay.call(next, null, true)
       },
       function (p1, p2, next) {
-        next(new Error('3'))
+        delay.call(next, new Error('3'))
       }
     ], function (err, p1, p2) {
       once.should.be.false
@@ -55,13 +63,13 @@ describe('FnChain', function () {
   it('should stop on error', function (done) {
     new FnChain([
       function (next) {
-        next()
+        delay.call(next)
       },
       function (next) {
-        next(new Error('2'))
+        delay.call(next, new Error('2'))
       },
       function (next) {
-        next(new Error('3'))
+        delay.call(next, new Error('3'))
       }
     ], function (err) {
       once.should.be.false
@@ -77,16 +85,16 @@ describe('FnChain', function () {
         chain.addTask(function (next) {
           next(new Error('4'))
         })
-        next()
+        delay.call(next)
       },
       function (next) {
         chain.addTask(function (next) {
-          next(new Error('5'))
+          delay.call(next, new Error('5'))
         })
-        next()
+        delay.call(next)
       },
       function (next) {
-        next()
+        delay.call(next)
       }
     ], function (err) {
       once.should.be.false
@@ -94,6 +102,7 @@ describe('FnChain', function () {
       should.exist(err)
       err.message.should.be.equal('4')
       done()
-    }).call()
+    })
+    chain.call()
   })
 })

@@ -3,7 +3,7 @@
   "name": "fnchain",
   "description": "Serial control flow with explicit progression",
   "keywords": ["step", "series", "serial", "chain", "next"],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "http://github.com/kilianc/node-fnchain.git"
