@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/kilianc/node-fnchain.png)](http://travis-ci.org/kilianc/node-fnchain)
 # FnChain [![build status](https://secure.travis-ci.org/kilianc/node-fnchain.png?branch=master)](http://travis-ci.org/kilianc/node-fnchain)
 
 Serial control flow with explicit progression
